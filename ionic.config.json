@@ -1,0 +1,7 @@
+{
+  "name": "Formulario_Ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
