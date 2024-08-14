@@ -43,7 +43,7 @@
       <ion-item *ngFor="let list of list">
         <ion-label>
           <h1>{{list.Title}}</h1>
-          <p>{{list.Description }}</p>
+          <p>{{list.Description }} <ion-checkbox (ionChange)="onCheckboxChange($event)"></ion-checkbox></p>
         </ion-label>
       </ion-item>
     </ion-list>

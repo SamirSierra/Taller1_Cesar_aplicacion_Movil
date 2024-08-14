@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { tasklist } from 'src/app/home/Task.list';
+import { AlertController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-home',
@@ -13,7 +15,30 @@ public Description: string= '';
 public Sub: boolean= false;
 public Done: boolean= false;
 list: tasklist[] = [];
-constructor() {}
+constructor(private alertController: AlertController) {}
+
+onCheckboxChange(event: any) {
+  const isChecked = event.detail.checked;
+  console.log('Checkbox state changed. Is checked:', isChecked);
+  this.presentAlert();
+}
+async presentAlert() {
+  const alert = await this.alertController.create({
+    header: 'Congratulations',
+    subHeader: 'great',
+    message: 'Your task is finished.',
+    buttons: [
+      {
+        text: 'Okay',
+        handler: () => {
+          console.log('Okay clicked');
+        },
+      },
+    ],
+  });
+
+  await alert.present();
+}
 
 Sendlist(){
 if(this.Title.length >=3 && this.Description.length >=10){
@@ -43,3 +68,4 @@ this.list[index].Submit = true;
     }
   }
 }
+
